@@ -16,6 +16,9 @@ import StatisticsCard from 'src/views/dashboard/StatisticsCard'
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import React from "react";
+import CardNavigationCenter from "../views/cards/CardNavigationCenter";
+import CardHorizontalRatings from "../views/cards/CardHorizontalRatings";
+import CardSupport from "../views/cards/CardSupport";
 
 const Dashboard = () => {
   return (
@@ -30,32 +33,13 @@ const Dashboard = () => {
           <Typography variant='body2'>Todo sobre la aplicación</Typography>
         </Grid>
         <Grid item xs={12} md={12}>
-          <StatisticsCard/>
+          <CardNavigationCenter />
         </Grid>
-        <Grid item xs={12}>
-          <Grid container spacing={6}>
-            <Grid item xs={6}>
-              <CardStatisticsVerticalComponent
-                stats='$25.6k'
-                icon={<Poll />}
-                color='success'
-                trendNumber='+42%'
-                title='Total Profit'
-                subtitle='Weekly Profit'
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <CardStatisticsVerticalComponent
-                stats='$78'
-                title='Refunds'
-                trend='negative'
-                color='secondary'
-                trendNumber='-15%'
-                subtitle='Past Month'
-                icon={<CurrencyUsd />}
-              />
-            </Grid>
-          </Grid>
+        <Grid item xs={12} sm={6}>
+          <CardHorizontalRatings />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <CardSupport/>
         </Grid>
       </Grid>
     </ApexChartWrapper>

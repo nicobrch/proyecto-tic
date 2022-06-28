@@ -2,7 +2,6 @@
 import HomeOutline from 'mdi-material-ui/HomeOutline'
 import VideoWireless from 'mdi-material-ui/VideoWireless'
 import ChartLine from 'mdi-material-ui/ChartLine'
-import Cog from 'mdi-material-ui/Cog'
 import Email from 'mdi-material-ui/Email'
 
 const navigation = () => {
@@ -21,11 +20,6 @@ const navigation = () => {
       title: 'Gráficos',
       icon: ChartLine,
       path: '/charts'
-    },
-    {
-      title: 'Ajustes',
-      icon: Cog,
-      path: '/settings'
     },
     {
       title: 'Contacto',
