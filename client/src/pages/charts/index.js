@@ -31,11 +31,15 @@ const Charts = () => {
     )
   }
 
-  let colBarras = [];
-  const largo = data.length-7;
+  let colLineas = [];
+  let dataTemp = [];
+  const largoLinea = data.length-7;
   for (let i=0; i<7; i++){
-    colBarras.push(parseFecha(data, largo+i));
+    colLineas.push(parseFecha(data, largoLinea+i));
+    dataTemp.push(data[largoLinea+i]['temperatura']);
   }
+
+  console.log(dataTemp);
 
   const random = () => Math.round(Math.random() * 100)
 
@@ -54,32 +58,24 @@ const Charts = () => {
           <CardHeader title='Últimas horas' titleTypographyProps={{ variant: 'h6' }} />
           <CChartLine
             data={{
-              labels: colBarras,
+              labels: colLineas,
               datasets: [
                 {
                   label: 'Temperatura',
                   backgroundColor: 'rgba(220, 220, 220, 0.2)',
-                  borderColor: 'rgba(220, 220, 220, 1)',
-                  pointBackgroundColor: 'rgba(220, 220, 220, 1)',
+                  borderColor: 'rgba(38, 138, 189, 1)',
+                  pointBackgroundColor: 'rgba(38, 138, 189, 1)',
                   pointBorderColor: '#fff',
-                  data: [random(), random(), random(), random(), random(), random(), random()],
-                },
-                {
-                  label: 'Sonido',
-                  backgroundColor: 'rgba(151, 187, 205, 0.2)',
-                  borderColor: 'rgba(151, 187, 205, 1)',
-                  pointBackgroundColor: 'rgba(151, 187, 205, 1)',
-                  pointBorderColor: '#fff',
-                  data: [random(), random(), random(), random(), random(), random(), random()],
-                },
-              ],
+                  data: dataTemp,
+                }
+              ]
             }}
           />
         </Card>
       </Grid>
       <Grid item xs={6}>
         <Card>
-          <CardHeader title='Promedio de las últimas horas' titleTypographyProps={{ variant: 'h6' }} />
+          <CardHeader title='Promedio de la última semana' titleTypographyProps={{ variant: 'h6' }} />
           <CChartBar
             data={{
               labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -88,12 +84,7 @@ const Charts = () => {
                   label: 'Temperatura',
                   backgroundColor: '#f87979',
                   data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
-                },
-                {
-                  label: 'Sonido',
-                  backgroundColor: '#f87979',
-                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
-                },
+                }
               ],
             }}
             labels="months"
