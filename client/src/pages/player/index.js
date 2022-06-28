@@ -15,6 +15,7 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 import StatisticsCard from 'src/views/dashboard/StatisticsCard'
 import React, {useState, useEffect} from "react";
 import {fetchLastRegistro} from "../../api";
+import {parseFecha} from "../../@core/utils/parse-fecha";
 
 const Dashboard = () => {
 
@@ -35,6 +36,8 @@ const Dashboard = () => {
     )
   }
 
+  let fecha = parseFecha(data.data, 0);
+
   return (
     <ApexChartWrapper>
       <Grid container spacing={6}>
@@ -49,8 +52,7 @@ const Dashboard = () => {
                 icon={<Thermometer/>}
                 color='success'
                 title='Grados C°'
-                subtitle={'Registro mas reciente a las: ' + data.data[0]['fecha'][11] + data.data[0]['fecha'][12]
-              + data.data[0]['fecha'][13] + data.data[0]['fecha'][14] + data.data[0]['fecha'][15] + ' horas'}
+                subtitle={'Registro mas reciente a las: ' + fecha + ' horas'}
               />
             </Grid>
             <Grid item xs={6}>
@@ -58,8 +60,7 @@ const Dashboard = () => {
                 stats={data.data[0]['sonido'] === 'high' ? 'Está llorando!' : 'Está calmado'}
                 title='Sonido'
                 color='secondary'
-                subtitle={'Registro mas reciente a las: ' + data.data[0]['fecha'][11] + data.data[0]['fecha'][12]
-                  + data.data[0]['fecha'][13] + data.data[0]['fecha'][14] + data.data[0]['fecha'][15] + ' horas'}
+                subtitle={'Registro mas reciente a las: ' + fecha + ' horas'}
                 icon={<VolumeHigh />}
               />
             </Grid>

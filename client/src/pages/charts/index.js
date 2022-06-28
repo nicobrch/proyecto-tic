@@ -9,6 +9,7 @@ import Link from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import TableStickyHeader from "../../views/tables/TableStickyHeader";
+import {parseFecha} from "../../@core/utils/parse-fecha";
 import {fetchRegistros} from "../../api";
 
 const Charts = () => {
@@ -30,7 +31,11 @@ const Charts = () => {
     )
   }
 
-  console.log(data);
+  let colBarras = [];
+  const largo = data.length-7;
+  for (let i=0; i<7; i++){
+    colBarras.push(parseFecha(data, largo+i));
+  }
 
   const random = () => Math.round(Math.random() * 100)
 
@@ -46,10 +51,10 @@ const Charts = () => {
       </Grid>
       <Grid item xs={6}>
         <Card>
-          <CardHeader title='Última semana' titleTypographyProps={{ variant: 'h6' }} />
+          <CardHeader title='Últimas horas' titleTypographyProps={{ variant: 'h6' }} />
           <CChartLine
             data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: colBarras,
               datasets: [
                 {
                   label: 'Temperatura',
