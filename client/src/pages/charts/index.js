@@ -35,14 +35,26 @@ const Charts = () => {
 
   let colLineas = [];
   let dataTemp = [];
-  for (let i=6; i>=0; i--){
+  let cantidad;
+  if (data.length >= 7){
+    cantidad = 6;
+  } else {
+    cantidad = data.length;
+  }
+  for (let i=cantidad; i>=0; i--){
     colLineas.push(parseFecha(data, i));
     dataTemp.push(data[i]['temperatura']);
   }
 
   let colBarras = [];
   let weekTemp = [];
-  for (let i=6; i>=0; i--){
+  let largo;
+  if (weekData.length >= 7){
+    largo = 6;
+  } else {
+    largo = weekData.length;
+  }
+  for (let i=largo; i>=0; i--){
     colBarras.push(parseWeek(weekData, i));
     weekTemp.push(weekData[i]['temperatura']);
   }

@@ -13,13 +13,23 @@ import EmailOutline from "mdi-material-ui/EmailOutline";
 import AccountOutline from "mdi-material-ui/AccountOutline";
 import MessageOutline from "mdi-material-ui/MessageOutline";
 
+import toast from "react-hot-toast";
+import {validUrl} from "../../@core/utils/valid-url";
+import {validVideo} from "../../@core/utils/valid-video";
+
 const FormLayoutsBasic = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    return toast.success("Mensaje enviado!")
+  }
 
   return (
     <Card>
       <CardHeader title='Envíanos un mensaje!' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
-        <form onSubmit={e => e.preventDefault()}>
+        <form onSubmit={handleSubmit}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
               <TextField
@@ -37,6 +47,7 @@ const FormLayoutsBasic = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                id="outlined-basic"
                 fullWidth
                 type='email'
                 label='Correo Electrónico'

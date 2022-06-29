@@ -11,10 +11,16 @@ import FormLayoutsIcons from 'src/views/form-layouts/FormLayoutsBasic'
 import 'react-datepicker/dist/react-datepicker.css'
 import FormLayoutsSeparator from "../../views/form-layouts/FormLayoutsSeparator";
 import FormLayoutsBasic from "src/views/form-layouts/FormLayoutsBasic";
+import {Toaster} from "react-hot-toast";
+import React from "react";
 
 const Contact = () => {
   return (
     <DatePickerWrapper>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <Grid container spacing={6} sx={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Grid item xs={12} md={6}>
           <FormLayoutsBasic />
