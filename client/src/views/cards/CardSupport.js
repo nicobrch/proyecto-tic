@@ -31,7 +31,7 @@ const CardSupport = () => {
         <Typography variant='body2' sx={{ marginBottom: 6 }}>
           ¿Necesitas ayuda? Contáctanos!
         </Typography>
-        <Button variant='contained' sx={{ padding: theme => theme.spacing(1.75, 5.5) }}>
+        <Button variant='contained' href="contact" sx={{ padding: theme => theme.spacing(1.75, 5.5) }}>
           Contacto
         </Button>
       </CardContent>
