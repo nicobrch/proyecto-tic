@@ -16,6 +16,7 @@ import StatisticsCard from 'src/views/dashboard/StatisticsCard'
 import React, {useState, useEffect} from "react";
 import {fetchLastRegistro} from "../../api";
 import {parseFecha} from "../../@core/utils/parse-fecha";
+import {Toaster} from "react-hot-toast";
 
 const Dashboard = () => {
 
@@ -40,6 +41,10 @@ const Dashboard = () => {
 
   return (
     <ApexChartWrapper>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
           <StatisticsCard/>

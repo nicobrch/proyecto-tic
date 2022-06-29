@@ -11,6 +11,10 @@ import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import CardActions from "@mui/material/CardActions";
 
+import toast from "react-hot-toast"
+import {validUrl} from "../../@core/utils/valid-url";
+import {validVideo} from "../../@core/utils/valid-video";
+
 const StatisticsCard = () => {
 
   const [video, setVideo] = useState("/images/video.png");
@@ -24,8 +28,21 @@ const StatisticsCard = () => {
 
   const handleSubmit = () => {
     if(ipcam === "" || ipcam === undefined){
+      toast.error("No has ingresado ninguna dirección HTTP")
+
       return setVideo("/images/video.png");
     }
+    if (!validUrl(ipcam)){
+      toast.error("No es una dirección HTTP válida")
+
+      return setVideo("/images/video.png");
+    }
+    if (!validVideo(ipcam)){
+      toast.error("La dirección no contiene el formato /video")
+
+      return setVideo("/images/video.png");
+    }
+    toast.success("Dirección valida!")
 
     return setVideo(ipcam);
   }
@@ -62,7 +79,7 @@ const StatisticsCard = () => {
             variant="outlined"
             value={ipcam}
             size="small"
-            placeholder="http://192.168.1.80/video"
+            placeholder="http://192.168.1.80:8080/video"
             onChange={(e) => (
               onTextChange(e)
             )}

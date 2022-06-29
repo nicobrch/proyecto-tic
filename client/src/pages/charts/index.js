@@ -57,7 +57,7 @@ const Charts = () => {
         </Typography>
         <Typography variant='body2'>Información respecto a los datos capturados por el dispositivo Baby Cam.</Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Card>
           <CardHeader title='Últimos registros' titleTypographyProps={{ variant: 'h6' }} />
           <CChartLine
@@ -77,7 +77,7 @@ const Charts = () => {
           />
         </Card>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Card>
           <CardHeader title='Promedio de la última semana' titleTypographyProps={{ variant: 'h6' }} />
           <CChartBar

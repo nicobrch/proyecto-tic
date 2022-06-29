@@ -75,7 +75,7 @@ const CardNavigationCenter = () => {
           </TabPanel>
           <TabPanel value='3' sx={{ p: 0 }}>
             <Typography variant='h6' sx={{ marginBottom: 2 }}>
-              Tercer Paso
+              Conecta Babycam!
             </Typography>
             <Typography variant='body2' sx={{ marginBottom: 2 }}>
               Ahora que ya tienes la dirección HTTP del servidor IPCAM, ingrésala en nuestra página de "Reproductor",
@@ -94,7 +94,7 @@ const CardNavigationCenter = () => {
               ● Mantener el teléfono móvil con carga
             </Typography>
             <Typography variant='body2' sx={{ marginBottom: 4 }}>
-              ● Tener todos tus dispositivos conectados a la misma red WiFi
+              ● Tener todos tus dispositivos conectados a la misma red Wi-Fi
             </Typography>
             <Button variant='contained' href="/player">Probar reproductor</Button>
           </TabPanel>

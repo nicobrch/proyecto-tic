@@ -1,28 +1,22 @@
 // ** MUI Imports
 import Grid from '@mui/material/Grid'
 
-// ** Icons Imports
-import Poll from 'mdi-material-ui/Poll'
-import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
-
-// ** Custom Components Imports
-import CardStatisticsVerticalComponent from 'src/@core/components/card-statistics/card-stats-vertical'
-
 // ** Styled Component Import
 import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 
 // ** Demo Components Imports
-import StatisticsCard from 'src/views/dashboard/StatisticsCard'
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import React from "react";
 import CardNavigationCenter from "../views/cards/CardNavigationCenter";
 import CardHorizontalRatings from "../views/cards/CardHorizontalRatings";
 import CardSupport from "../views/cards/CardSupport";
+import {Toaster} from "react-hot-toast"
 
 const Dashboard = () => {
   return (
     <ApexChartWrapper>
+      <Toaster/>
       <Grid container spacing={6}>
         <Grid item xs={12}>
           <Typography variant='h5'>
