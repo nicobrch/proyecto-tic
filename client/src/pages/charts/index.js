@@ -9,17 +9,19 @@ import Link from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import TableStickyHeader from "../../views/tables/TableStickyHeader";
-import {parseFecha} from "../../@core/utils/parse-fecha";
-import {fetchRegistros} from "../../api";
+import {parseFecha, parseWeek} from "../../@core/utils/parse-fecha";
+import {fetchRegistros, fetchWeekRegistros} from "../../api";
 
 const Charts = () => {
 
   const [data, setData] = useState(null);
+  const [weekData, setWeekData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     fetchRegistros().then(d => setData(d));
+    fetchWeekRegistros().then(w => setWeekData(w));
     setTimeout(() => {
       setLoading(false);
     }, 150)
@@ -33,15 +35,17 @@ const Charts = () => {
 
   let colLineas = [];
   let dataTemp = [];
-  const largoLinea = data.length-7;
-  for (let i=0; i<7; i++){
-    colLineas.push(parseFecha(data, largoLinea+i));
-    dataTemp.push(data[largoLinea+i]['temperatura']);
+  for (let i=6; i>=0; i--){
+    colLineas.push(parseFecha(data, i));
+    dataTemp.push(data[i]['temperatura']);
   }
 
-  console.log(dataTemp);
-
-  const random = () => Math.round(Math.random() * 100)
+  let colBarras = [];
+  let weekTemp = [];
+  for (let i=6; i>=0; i--){
+    colBarras.push(parseWeek(weekData, i));
+    weekTemp.push(weekData[i]['temperatura']);
+  }
 
   return (
     <Grid container spacing={6}>
@@ -51,11 +55,11 @@ const Charts = () => {
             Registros
           </Link>
         </Typography>
-        <Typography variant='body2'>Información respecto a los datos capturados por el dispositivo Arduino.</Typography>
+        <Typography variant='body2'>Información respecto a los datos capturados por el dispositivo Baby Cam.</Typography>
       </Grid>
       <Grid item xs={6}>
         <Card>
-          <CardHeader title='Últimas horas' titleTypographyProps={{ variant: 'h6' }} />
+          <CardHeader title='Últimos registros' titleTypographyProps={{ variant: 'h6' }} />
           <CChartLine
             data={{
               labels: colLineas,
@@ -78,16 +82,16 @@ const Charts = () => {
           <CardHeader title='Promedio de la última semana' titleTypographyProps={{ variant: 'h6' }} />
           <CChartBar
             data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: colBarras,
               datasets: [
                 {
                   label: 'Temperatura',
                   backgroundColor: '#f87979',
-                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40],
+                  data: weekTemp,
                 }
               ],
             }}
-            labels="months"
+            labels="semanas"
           />
         </Card>
       </Grid>

@@ -9,7 +9,7 @@ app.use(express.json());
 app.get('/registro', async (req, res) => {
     try {
 
-        const sql = "SELECT * FROM registro";
+        const sql = "SELECT * FROM registro ORDER BY id DESC LIMIT 200";
 
         db.query(sql, (err, result) => {
             if (err) throw err;
@@ -30,6 +30,26 @@ app.get('/lastregistro', async (req, res) => {
     try {
 
         const sql = "SELECT * FROM registro WHERE id = (SELECT MAX(id) FROM registro)";
+
+        db.query(sql, (err, result) => {
+            if (err) throw err;
+            if (result.length>0){
+                res.status(200).json(result);
+            } else {
+                res.status(200).json('No results');
+            }
+        })
+
+    } catch (e) {
+        console.log(e.message);
+        res.status(500).send(e.message);
+    }
+})
+
+app.get('/weekregistro', async (req, res) => {
+    try {
+
+        const sql = "SELECT CAST(fecha as DATE) as fecha, ROUND(AVG(temperatura),2) as temperatura FROM registro WHERE CAST(fecha AS DATE) > DATE(NOW() - INTERVAL 7 DAY) GROUP BY CAST(fecha as DATE) ORDER BY CAST(fecha as DATETIME) DESC";
 
         db.query(sql, (err, result) => {
             if (err) throw err;

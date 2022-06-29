@@ -11,5 +11,11 @@ export const fetchRegistros = () => {
 export const fetchLastRegistro = () => {
   console.log('Fetching last registro...');
 
-  return axios.get(url + 'lastregistro');
+  return axios.get(url + 'lastregistro').then(res => res.data);
+}
+
+export const fetchWeekRegistros = () => {
+  console.log('Fetching week registros...');
+
+  return axios.get(url + 'weekregistro').then(res => res.data);
 }

@@ -36,7 +36,7 @@ const Dashboard = () => {
     )
   }
 
-  let fecha = parseFecha(data.data, 0);
+  let fecha = parseFecha(data, 0);
 
   return (
     <ApexChartWrapper>
@@ -48,7 +48,7 @@ const Dashboard = () => {
           <Grid container spacing={6}>
             <Grid item xs={6}>
               <CardStatisticsVerticalComponent
-                stats={data.data[0]['temperatura'] + '°'}
+                stats={data[0]['temperatura'] + '°'}
                 icon={<Thermometer/>}
                 color='success'
                 title='Grados C°'
@@ -57,7 +57,7 @@ const Dashboard = () => {
             </Grid>
             <Grid item xs={6}>
               <CardStatisticsVerticalComponent
-                stats={data.data[0]['sonido'] === 'high' ? 'Está llorando!' : 'Está calmado'}
+                stats={data[0]['sonido'] === 'high' ? 'Está llorando!' : 'Está calmado'}
                 title='Sonido'
                 color='secondary'
                 subtitle={'Registro mas reciente a las: ' + fecha + ' horas'}

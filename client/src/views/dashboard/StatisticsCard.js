@@ -62,6 +62,7 @@ const StatisticsCard = () => {
             variant="outlined"
             value={ipcam}
             size="small"
+            placeholder="http://192.168.1.80/video"
             onChange={(e) => (
               onTextChange(e)
             )}

@@ -47,14 +47,18 @@ const CardNavigationCenter = () => {
             <Typography variant='body2' sx={{ marginBottom: 1 }}>
               ● 25 Fotogramas por segundo
             </Typography>
-            <Typography variant='body2' sx={{ marginBottom: 4 }}>
+            <Typography variant='body2' sx={{ marginBottom: 1 }}>
               ● Una conexión estable a internet
             </Typography>
-            <Button variant='contained' href="https://play.google.com/store/apps/details?id=com.pas.webcam">Play Store</Button>
+            <Button sx={{ marginTop: "6px"}} variant='contained' href="https://play.google.com/store/apps/details?id=com.pas.webcam">Descargar en Play Store</Button>
+            <Button sx={{ marginLeft: "15px", marginTop: "6px"}} variant='contained' href="https://apps.apple.com/us/app/droidcam-webcam-obs-camera/id1510258102">Alternativa App Store</Button>
           </TabPanel>
           <TabPanel value='2' sx={{ p: 0 }}>
             <Typography variant='h6' sx={{ marginBottom: 2 }}>
               Iniciar servidor IPCAM
+            </Typography>
+            <Typography variant='body2' sx={{ marginBottom: 1 }}>
+              Dirígete al final de la aplicación y apreta el botón "Iniciar Servidor" y otorga permisos a la aplicación.
             </Typography>
             <Typography variant='body2' sx={{ marginBottom: 4 }}>
               Una vez inicies tu servidor IPCAM, te aparecerá una interfaz como la siguiente:
@@ -73,15 +77,24 @@ const CardNavigationCenter = () => {
             <Typography variant='h6' sx={{ marginBottom: 2 }}>
               Tercer Paso
             </Typography>
-            <Typography variant='body2' sx={{ marginBottom: 4 }}>
+            <Typography variant='body2' sx={{ marginBottom: 2 }}>
               Ahora que ya tienes la dirección HTTP del servidor IPCAM, ingrésala en nuestra página de "Reproductor",
               agregándole "/video" al final. Utilizando la dirección anterior como ejemplo, quedaría:
             </Typography>
-            <Typography variant='body2' sx={{ marginBottom: 4 }}>
+            <Typography variant='body2' sx={{ marginBottom: 2 }}>
               http://10.123.198.175:8080/video
             </Typography>
+            <Typography variant='body2' sx={{ marginBottom: 2 }}>
+              Asegúrate de:
+            </Typography>
+            <Typography variant='body2' sx={{ marginBottom: 1 }}>
+              ● Escribir bien la dirección
+            </Typography>
+            <Typography variant='body2' sx={{ marginBottom: 1 }}>
+              ● Mantener el teléfono móvil con carga
+            </Typography>
             <Typography variant='body2' sx={{ marginBottom: 4 }}>
-              Asegúrate de escribir todo bien!
+              ● Tener todos tus dispositivos conectados a la misma red WiFi
             </Typography>
             <Button variant='contained' href="/player">Probar reproductor</Button>
           </TabPanel>
