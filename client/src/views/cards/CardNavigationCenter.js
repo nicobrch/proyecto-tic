@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // ** MUI Imports
 import Tab from '@mui/material/Tab'
@@ -10,6 +10,7 @@ import Button from '@mui/material/Button'
 import TabContext from '@mui/lab/TabContext'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
+import CardMedia from "@mui/material/CardMedia";
 
 const CardNavigationCenter = () => {
   // ** State
@@ -53,23 +54,36 @@ const CardNavigationCenter = () => {
           </TabPanel>
           <TabPanel value='2' sx={{ p: 0 }}>
             <Typography variant='h6' sx={{ marginBottom: 2 }}>
-              Header Two
+              Iniciar servidor IPCAM
             </Typography>
             <Typography variant='body2' sx={{ marginBottom: 4 }}>
-              Dragée chupa chups soufflé cheesecake jelly tootsie roll cupcake marzipan. Carrot cake sweet roll gummi
-              bears caramels jelly beans.
+              Una vez inicies tu servidor IPCAM, te aparecerá una interfaz como la siguiente:
             </Typography>
-            <Button variant='contained'>Button Two</Button>
+            <CardMedia sx={{ marginBottom: 4}}
+              component="img"
+              image="/images/ipcam-ip.jpg"
+              alt="Ejemplo"
+            />
+            <Typography variant='body2' sx={{ marginBottom: 4 }}>
+              Como te podrás dar cuenta, aparecé una dirección HTTP "http://10.123.198.175:8080". Guarda esta
+              dirección para luego utilizarla en nuestro servicio.
+            </Typography>
           </TabPanel>
           <TabPanel value='3' sx={{ p: 0 }}>
             <Typography variant='h6' sx={{ marginBottom: 2 }}>
-              Header Three
+              Tercer Paso
             </Typography>
             <Typography variant='body2' sx={{ marginBottom: 4 }}>
-              Icing cake macaroon macaroon jelly chocolate bar. Chupa chups dessert dessert soufflé chocolate bar
-              jujubes gummi bears lollipop.
+              Ahora que ya tienes la dirección HTTP del servidor IPCAM, ingrésala en nuestra página de "Reproductor",
+              agregándole "/video" al final. Utilizando la dirección anterior como ejemplo, quedaría:
             </Typography>
-            <Button variant='contained'>Button Three</Button>
+            <Typography variant='body2' sx={{ marginBottom: 4 }}>
+              http://10.123.198.175:8080/video
+            </Typography>
+            <Typography variant='body2' sx={{ marginBottom: 4 }}>
+              Asegúrate de escribir todo bien!
+            </Typography>
+            <Button variant='contained' href="/player">Probar reproductor</Button>
           </TabPanel>
         </CardContent>
       </TabContext>
